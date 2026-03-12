@@ -50,15 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── 5. Wave parallax on scroll ──
-    const waveSvg = document.querySelector('.custom-shape-divider-bottom-1710260400 svg');
-    if (waveSvg) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            // Move the wave gently as the user scrolls
-            waveSvg.style.transform = `translateX(${Math.sin(scrolled * 0.005) * 15}px)`;
-        }, { passive: true });
-    }
 
     // ── 6. Destinations carousel auto-scroll ──
     const grid = document.querySelector('.destinations-grid');
