@@ -107,4 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
             autoTimer = setInterval(slideRight, 3000);
         }, { passive: true });
     }
+
+    // Partners carousel functionality removed and replaced with CSS marquee for smoother motion
 });
