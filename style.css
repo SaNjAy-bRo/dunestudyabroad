@@ -819,31 +819,15 @@ img {
 }
 
 .destination-content {
-    padding: 40px 20px 30px;
+    padding: 35px 20px 30px;
 }
 
 .destination-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-.destination-content p {
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-    min-height: 65px;
-}
-
-.learn-more {
+    font-size: 1.4rem;
+    margin-bottom: 0;
     font-weight: 700;
-    color: var(--color-accent);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
 }
 
-.learn-more:hover {
-    color: var(--color-text-primary);
-}
 
 .slider-controls {
     display: flex;
