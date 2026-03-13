@@ -814,6 +814,9 @@ img {
 /* ==========================================================================
    Destinations Section
    ========================================================================== */
+.destinations {
+    padding-bottom: 40px; /* Reduced space between country section and video promo */
+}
 .destinations-subtitle {
     margin-top: -30px;
     margin-bottom: 40px;
@@ -976,6 +979,9 @@ img {
 /* ==========================================================================
    Video Promo Section
    ========================================================================== */
+.video-promo {
+    padding-top: 40px; /* Reduced space between country section and video promo */
+}
 .video-promo h2 {
     font-size: 2.8rem;
     font-weight: 800;
