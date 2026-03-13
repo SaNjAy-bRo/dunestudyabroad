@@ -170,10 +170,11 @@ img {
 }
 
 .logo-text {
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 2.2rem; /* Clean professional size for web */
+    font-weight: 950;
     color: var(--color-text-primary);
     line-height: 1;
+    letter-spacing: 1px;
 }
 
 .logo-text small {
@@ -257,9 +258,7 @@ img {
     .header-container {
         padding: 0 1rem;
     }
-    .logo-text {
-        font-size: 1rem;
-    }
+    /* Header font-size handled in specific media blocks */
     .header-contact a {
         font-size: 1.2rem;
     }
@@ -276,6 +275,22 @@ img {
 .header:not(.scrolled) .header-contact p,
 .header:not(.scrolled) .header-contact a {
     color: var(--color-white);
+}
+
+.header:not(.scrolled) .mobile-phone-icon {
+    background: linear-gradient(135deg, var(--color-primary-start), var(--color-primary-end));
+    color: var(--color-white);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(123, 82, 201, 0.3);
+    border: none; /* Remove white border */
+    backdrop-filter: none; /* Remove blur */
+    -webkit-backdrop-filter: none;
 }
 
 .mobile-phone-icon {
@@ -535,14 +550,26 @@ img {
         margin-top: 30px;
     }
     .hero {
-        min-height: auto;
-        padding: 140px 0 140px; /* Increased top padding from 100px */
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(123, 82, 201, 0.8) 50%, rgba(30, 10, 60, 0.95) 100%), url('assets/images/hero-bg-mobile.jpeg');
+        background-position: center bottom;
+        min-height: 100vh;
+        padding-top: 100px;
+        padding-bottom: 140px; /* Retained original bottom padding */
     }
 }
 
 @media (max-width: 768px) {
+    .logo-text {
+        font-size: 2.0rem; /* Properly increased for mobile impact */
+        font-weight: 950;
+        letter-spacing: 0.5px;
+    }
     .hero {
-        padding: 120px 0 120px; /* Increased top padding from 90px */
+        background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(123, 82, 201, 0.4) 40%, rgba(30, 10, 60, 0.8) 100%), url('assets/images/hero-bg-mobile.jpeg') !important;
+        background-position: center center;
+        background-size: cover !important;
+        min-height: 100vh !important;
+        padding-top: 100px;
     }
     .hero-title {
         font-size: 2.8rem;
@@ -588,10 +615,14 @@ img {
 /* ==========================================================================
    Services Section
    ========================================================================== */
+.services {
+    background-color: var(--color-background-alt);
+}
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(3, 1fr); /* 3x2 grid for web view */
+    gap: 30px;
+    margin-top: 50px;
 }
 
 .service-card {
@@ -753,6 +784,25 @@ img {
     flex-shrink: 0;
 }
 
+.hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(123, 82, 201, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(123, 82, 201, 0.2);
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
 .why-choose-list h4 {
     font-size: 1.3rem;
     font-weight: 700;
@@ -815,7 +865,34 @@ img {
    Destinations Section
    ========================================================================== */
 .destinations {
-    padding-bottom: 40px; /* Reduced space between country section and video promo */
+    background-color: var(--color-white); /* Keep white for contrast */
+    padding-bottom: 40px; 
+}
+
+.destinations-marquee-wrapper {
+    overflow: hidden;
+    margin: 40px 0;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.destinations-marquee {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: marquee-destinations 60s linear infinite;
+}
+
+.destinations-marquee:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-destinations {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 15px)); }
+}
+
+.slider-controls {
+    display: none; /* Hide manual controls */
 }
 .destinations-subtitle {
     margin-top: -30px;
@@ -1059,6 +1136,26 @@ img {
     transform: translateX(-50%);
 }
 
+.btn-hero {
+    background: linear-gradient(135deg, var(--color-primary-start), var(--color-primary-end));
+    color: var(--color-white);
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(123, 82, 201, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-hero ion-icon {
+    font-size: 1.3rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-hero:hover ion-icon {
+    transform: translateX(5px);
+}
+
 .play-btn:hover {
     background-color: var(--color-white);
     color: var(--color-text-primary);
@@ -1126,9 +1223,8 @@ img {
    Certifications Section
    ========================================================================== */
 .certifications {
-    background-color: var(--color-background-alt);
-    border-top: 1px solid var(--color-border);
-    padding: 40px 0;
+    background-color: var(--color-white) !important;
+    padding: 60px 0;
 }
 
 .certifications .section-title {
@@ -1157,7 +1253,7 @@ img {
    Testimonials Section
    ========================================================================== */
 .testimonials {
-    background-color: var(--color-white);
+    background-color: var(--color-background-alt);
 }
 
 .testimonials-grid {
@@ -1374,6 +1470,8 @@ img {
     padding: 15px 40px;
     font-size: 1.1rem;
     white-space: nowrap;
+    background: linear-gradient(135deg, var(--color-primary-start), var(--color-primary-end));
+    color: var(--color-white);
 }
 
 @media (max-width: 768px) {
@@ -1412,10 +1510,9 @@ img {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.footer-logo .logo-icon {
+    width: 60px; /* Larger logo for footer */
+    height: 60px;
 }
 
 .footer-contact {
@@ -1483,16 +1580,32 @@ img {
 @media (max-width: 900px) {
     .footer-top {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
         gap: 30px;
     }
     .footer-contact {
-        text-align: left;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .footer-logo {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .footer-address {
+        text-align: center;
+    }
+    .footer-bottom {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
     .logo-secondary {
         border-left: none;
@@ -1644,7 +1757,7 @@ img {
         height: 35px;
     }
     .logo-text {
-        font-size: 0.9rem;
+        /* font-size removed to avoid conflict */
     }
     .logo-primary {
         gap: 8px;
@@ -1683,6 +1796,17 @@ img {
     }
     .why-choose-list p {
         font-size: 0.85rem;
+    }
+    .why-choose-gallery {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .img-2, .img-3, .img-4 {
+        display: none;
+    }
+    .img-1 {
+        height: 300px;
+        grid-column: 1 / 2;
     }
 
     /* Destinations */
