@@ -51,61 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // ── 6. Destinations carousel auto-scroll ──
+    // ── 6. Destinations carousel auto-scroll (Replaced by CSS Marquee) ──
     const grid = document.querySelector('.destinations-grid');
-    const leftBtn = document.querySelector('#slide-left');
-    const rightBtn = document.querySelector('#slide-right');
-
-    if (grid && leftBtn && rightBtn) {
-        const getCardWidth = () => {
-            const card = grid.querySelector('.destination-card');
-            if (!card) return 330;
-            const style = getComputedStyle(grid);
-            const gap = parseInt(style.gap) || 30;
-            return card.offsetWidth + gap;
-        };
-
-        const slideRight = () => {
-            const maxScroll = grid.scrollWidth - grid.clientWidth;
-            if (grid.scrollLeft >= maxScroll - 5) {
-                grid.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                grid.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
-            }
-        };
-
-        const slideLeft = () => {
-            if (grid.scrollLeft <= 5) {
-                grid.scrollTo({ left: grid.scrollWidth, behavior: 'smooth' });
-            } else {
-                grid.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
-            }
-        };
-
-        rightBtn.addEventListener('click', () => { slideRight(); pauseAutoScroll(); });
-        leftBtn.addEventListener('click', () => { slideLeft(); pauseAutoScroll(); });
-
-        // Auto-scroll every 3 seconds
-        let autoTimer = setInterval(slideRight, 3000);
-
-        const pauseAutoScroll = () => {
-            clearInterval(autoTimer);
-            setTimeout(() => {
-                autoTimer = setInterval(slideRight, 3000);
-            }, 6000);
-        };
-
-        grid.addEventListener('mouseenter', () => clearInterval(autoTimer));
-        grid.addEventListener('mouseleave', () => {
-            clearInterval(autoTimer);
-            autoTimer = setInterval(slideRight, 3000);
-        });
-
-        grid.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
-        grid.addEventListener('touchend', () => {
-            clearInterval(autoTimer);
-            autoTimer = setInterval(slideRight, 3000);
-        }, { passive: true });
+    if (grid) {
+        // Manual scrolling listeners can be added here if needed
     }
 
     // Partners carousel functionality removed and replaced with CSS marquee for smoother motion
